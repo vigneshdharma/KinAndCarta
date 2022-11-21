@@ -14,28 +14,19 @@ interface ArticlesRepository {
     fun articles(): Either<Failure, Articles>
 
     class Network
-    @Inject constructor(
-        private val networkHandler: NetworkHandler,
-        private val service: ArticlesService
-    ) : ArticlesRepository {
+    @Inject constructor(private val networkHandler: NetworkHandler, private val service: ArticlesService) : ArticlesRepository {
 
         override fun articles(): Either<Failure, Articles> {
             return when (networkHandler.isNetworkAvailable()) {
                 true -> request(
-                    service.articles(),
-                    { articlesEntity: ArticlesEntity ->  articlesEntity.toArticle()},
-                    ArticlesEntity()
+                    service.articles(), { articlesEntity: ArticlesEntity -> articlesEntity.toArticle() }, ArticlesEntity()
                 )
                 false -> Either.Left(Failure.NetworkConnection)
             }
 
         }
 
-        private fun <T, R> request(
-            call: Call<T>,
-            transform: (T) -> R,
-            default: T
-        ): Either<Failure, R> {
+        private fun <T, R> request(call: Call<T>, transform: (T) -> R, default: T): Either<Failure, R> {
             return try {
                 val response = call.execute()
                 when (response.isSuccessful) {

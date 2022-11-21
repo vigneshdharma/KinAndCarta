@@ -18,6 +18,7 @@ class ArticleDetailsActivity : BaseActivity() {
     private fun initToolBar(){
         toolbar.setNavigationOnClickListener { onBackPressed() }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
     }
 
     companion object {

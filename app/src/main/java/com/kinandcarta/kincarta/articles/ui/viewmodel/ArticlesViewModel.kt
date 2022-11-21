@@ -18,8 +18,7 @@ class ArticlesViewModel
     private val _articles: MutableLiveData<List<CaseStudies>> = MutableLiveData()
     val articles: LiveData<List<CaseStudies>> = _articles
 
-    fun loadArticles() =
-        getArticles(UseCase.None(), viewModelScope) { it.fold(::handleFailure, ::handleArticleList) }
+    fun loadArticles() = getArticles(UseCase.None(), viewModelScope) { it.fold(::handleFailure, ::handleArticleList) }
 
     private fun handleArticleList(articles: Articles) {
         _articles.value = articles.caseStudies.filterNotNull()

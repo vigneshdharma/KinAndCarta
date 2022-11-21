@@ -2,8 +2,8 @@ package com.kinandcarta.kincarta.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.kinandcarta.kincarta.base.extension.inTransaction
 import com.kinandcarta.kincarta.R
+import com.kinandcarta.kincarta.base.extension.inTransaction
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -22,13 +22,9 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    private fun addFragment(savedInstanceState: Bundle?) =
-        savedInstanceState ?: supportFragmentManager.inTransaction {
-            add(
-                R.id.fragmentContainer,
-                fragment()
-            )
-        }
+    private fun addFragment(savedInstanceState: Bundle?) = savedInstanceState ?: supportFragmentManager.inTransaction {
+        add(R.id.fragmentContainer, fragment())
+    }
 
     abstract fun fragment(): BaseFragment
 }

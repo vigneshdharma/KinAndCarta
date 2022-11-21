@@ -13,7 +13,7 @@ object AndroidClient {
     const val appId = "com.kinandcarta.kincarta"
     const val versionCode = 1
     const val versionName = "1.0"
-    const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val testRunner = "com.kinandcarta.kincarta.HiltTestRunner"
 }
 
 object BuildPlugins {
@@ -82,12 +82,13 @@ object Libraries {
     const val retrofit = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpLoggingInterceptor}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
-    const val splashscreen = "androidx.core:core-splashscreen:1.0.0"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.5"
 }
 
 object TestLibraries {
     private object Versions {
         const val junit4 = "4.13.1"
+        const val jupiter = "5.8.2"
         const val mockk = "1.10.0"
         const val robolectric = "4.4"
         const val kluent = "1.72"
@@ -101,6 +102,7 @@ object TestLibraries {
 
     const val junit4 = "junit:junit:${Versions.junit4}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val jupiter = "org.junit.jupiter:junit-jupiter-api:${Versions.jupiter}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
     const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
@@ -109,6 +111,10 @@ object TestLibraries {
     const val espressoIntents = "androidx.test.espresso:espresso-intents:${Versions.espressoIntents}"
     const val testExtJunit = "androidx.test.ext:junit:${Versions.testExtensions}"
     const val hiltTesting = "com.google.dagger:hilt-android-testing:${Versions.hiltTesting}"
+    const val androidxArchCoreTesting = "androidx.arch.core:core-testing:2.1.0"
+    const val mockkAndroid = "io.mockk:mockk-android:1.11.0"
+    const val androidxFragmentTesting = "androidx.fragment:fragment-testing:1.5.4"
+    const val androidxTestCore = "androidx.test:core-ktx:1.4.0"
 }
 
 object DevLibraries {

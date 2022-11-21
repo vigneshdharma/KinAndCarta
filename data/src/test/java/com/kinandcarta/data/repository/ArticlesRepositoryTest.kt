@@ -33,6 +33,7 @@ class ArticlesRepositoryTest : UnitTest() {
 
     @MockK
     private lateinit var articleCall: Call<ArticlesEntity>
+
     @MockK
     private lateinit var articleResponse: Response<ArticlesEntity>
 
@@ -82,7 +83,8 @@ class ArticlesRepositoryTest : UnitTest() {
     }
 
 
-    @Test fun `articles service should return network failure when no connection`() {
+    @Test
+    fun `articles service should return network failure when no connection`() {
         every { networkHandler.isNetworkAvailable() } returns false
 
         val articles = networkRepository.articles()
@@ -93,7 +95,8 @@ class ArticlesRepositoryTest : UnitTest() {
         verify { service wasNot Called }
     }
 
-    @Test fun `articles service should return server error if no successful response`() {
+    @Test
+    fun `articles service should return server error if no successful response`() {
         every { networkHandler.isNetworkAvailable() } returns true
         every { articleResponse.isSuccessful } returns false
         every { articleCall.execute() } returns articleResponse
@@ -106,7 +109,8 @@ class ArticlesRepositoryTest : UnitTest() {
         articles.fold({ failure -> failure shouldBeInstanceOf Failure.ServerError::class.java }, {})
     }
 
-    @Test fun `articles request should catch exceptions`() {
+    @Test
+    fun `articles request should catch exceptions`() {
         every { networkHandler.isNetworkAvailable() } returns true
         every { articleCall.execute() } returns articleResponse
         every { service.articles() } returns articleCall

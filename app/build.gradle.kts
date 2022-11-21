@@ -22,6 +22,10 @@ android {
     testInstrumentationRunner = AndroidClient.testRunner
   }
 
+  testOptions {
+    animationsDisabled = true
+  }
+
   sourceSets {
     map { it.java.srcDir("src/${it.name}/kotlin") }
     getByName("main") { java.srcDir("$buildDir/generated/source/kapt/main") }
@@ -30,7 +34,11 @@ android {
 
 dependencies {
   testImplementation(project(mapOf("path" to ":data")))
-  //Compile time dependencies
+  testImplementation("org.junit.jupiter:junit-jupiter")
+  androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.4")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.0")
+    //Compile time dependencies
   kapt(Libraries.lifecycleCompiler)
   kapt(Libraries.hiltCompiler)
   kapt(Libraries.glideProcessor)
@@ -53,8 +61,7 @@ dependencies {
   implementation(Libraries.hilt)
   implementation(Libraries.retrofit)
   implementation(Libraries.okHttpLoggingInterceptor)
-  implementation (Libraries.splashscreen)
-  implementation ("androidx.fragment:fragment-ktx:1.2.5")
+  implementation (Libraries.fragmentKtx)
 
   // Unit/Android tests dependencies
   testImplementation(TestLibraries.junit4)
@@ -69,6 +76,13 @@ dependencies {
   androidTestImplementation(TestLibraries.testRules)
   androidTestImplementation(TestLibraries.espressoIntents)
   androidTestImplementation(TestLibraries.hiltTesting)
+
+  testImplementation (TestLibraries.androidxArchCoreTesting)
+  testImplementation(TestLibraries.jupiter)
+  androidTestImplementation (TestLibraries.androidxTestCore)
+  androidTestImplementation (TestLibraries.androidxArchCoreTesting)
+  androidTestImplementation (TestLibraries.mockkAndroid)
+  debugImplementation (TestLibraries.androidxFragmentTesting)
 
   implementation(project(":data"))
   implementation(project(":domain"))

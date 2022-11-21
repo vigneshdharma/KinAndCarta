@@ -15,31 +15,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppSplash"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".navigation.RouteActivity"
+            android:name=".splash.SplashActivity"
             android:exported="true"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <activity
             android:name=".articles.ArticlesActivity"
             android:exported="true"
-            android:label="Case Studies"
-            android:theme="@style/AppTheme"/>
+            android:label="Case Studies"/>
 
         <activity
             android:name=".articledetail.ArticleDetailsActivity"
             android:exported="true"
-            android:label="Article Detail"
-            android:theme="@style/AppTheme" />
+            android:label="Article Detail"/>
 
     </application>
 

@@ -57,7 +57,7 @@ class ArticleDetailsFragment : BaseFragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun renderArticleDetails(caseStudies: CaseStudies?) {
+    fun renderArticleDetails(caseStudies: CaseStudies?) {
         articlePoster.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         caseStudies?.let { studies ->
             with(studies) {
@@ -68,9 +68,8 @@ class ArticleDetailsFragment : BaseFragment() {
                             it
                         )
                     }
-                    it.toolbar.title = title
+                    it.toolbar.title = studies.title
                 }
-                articleTitle.text = studies.title
 
                 sections.forEach { section ->
 

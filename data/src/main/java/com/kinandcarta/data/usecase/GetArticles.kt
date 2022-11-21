@@ -7,7 +7,6 @@ import com.kinandcarta.domain.interactor.UseCase
 import com.kinandcarta.domain.model.Articles
 import javax.inject.Inject
 
-class GetArticles @Inject constructor(private val articlesRepository: ArticlesRepository):
-    UseCase<Articles, UseCase.None>() {
-    override suspend fun run(params: None): Either<Failure, Articles>  = articlesRepository.articles()
+class GetArticles @Inject constructor(private val articlesRepository: ArticlesRepository) : UseCase<Articles, UseCase.None>() {
+    override suspend fun run(params: None): Either<Failure, Articles> = articlesRepository.articles()
 }

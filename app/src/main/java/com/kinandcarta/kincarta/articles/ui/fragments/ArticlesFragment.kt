@@ -27,6 +27,7 @@ class ArticlesFragment : BaseFragment() {
 
     @Inject
     lateinit var navigator: Navigator
+
     @Inject
     lateinit var articlesAdapter: ArticlesAdapter
 
@@ -66,7 +67,7 @@ class ArticlesFragment : BaseFragment() {
         articleViewModel.loadArticles()
     }
 
-    private fun renderArticlesList(caseStudies: List<CaseStudies>?) {
+    fun renderArticlesList(caseStudies: List<CaseStudies>?) {
         articlesAdapter.collection = caseStudies.orEmpty()
         hideProgress()
     }
